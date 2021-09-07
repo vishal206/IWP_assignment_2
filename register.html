@@ -6,10 +6,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="square">
+        <form class="container" id="informationForm">
 
+            <h2>Account information</h2>
+
+            <hr><br>
+            <label>Full Name</label>
+            <input type="text" id="name" name="Fullname" placeholder="Full name" required>
+            <br><br>
+
+            <label>Date of birth</label>
+            <input type="date" id="dob">
+            <br><br>
+
+            <label for="email">Enter your email</label>
+            <input type="email" id="email" name="Email" placeholder="abcdef@gmail.com" required>
+            <br><br>
+
+            <label>Account type</label><br><br>
+            <input type="radio" id="Personal Account" name="Account type" value="Personal Account" required>
+              <label for="Personal Account">Personal Account</label>
+            <br><br>
+            <input type="radio" id="Company Account" name="Company Account" value="Company Account" required>
+              <label for="Company Account">Company Account</label><br><br>
+
+            <h2>Security</h2>
+            <hr><br>
+            <br>
+
+            <label>Password</label>
+            <input type="password" id="pwd" name="password" placeholder="password" pattern="(?=.*[A-Z]).{8,}" title="Minimum 8 letters & 
+                Must use Capital letters[A-Z]" required>
+            <br><br>
+            <label>Re-enter Password</label>
+            <input type="password" id="re-pwd" name="Re-enter password" placeholder="re-enter" required>
+            <br><br>
+
+
+            <h2>Physical Address</h2>
+            <hr><br>
+            <label>Country</label>
+            <select id="country" name="country" required>
+                <option value="select">-Select country-</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="Canada">Canada</option>
+            </select><br><br>
+            <label>State</label>
+            <select id="State" name="State" required>
+                <option value="select">-Select state-</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerla">Kerla</option>
+                <option value="Maharashtra">Maharashtra</option>
+            </select><br>
+            <br>
+
+            <label>Address</label>
+            <input type="text" id="address" name="Address" placeholder="Type Address" required>
+            <br><br>
+            <label>Pin code</label>
+            <input type="number" id="pinCode" name="Pin_Code" placeholder="Type pin code">
+            <br><br>
+
+
+            <h2>Notification</h2>
+            <hr><br>
+            <input type="checkbox" id="notification1" name="notification" value="recieve email" required>
+            <label for="notification1">I want to recieve email</label>
+            <br><br>
+            <input type="checkbox" id="notification2" name="notification" value="push notification">
+            <label for="notification2">Push Notification</label>
+            <!-- <ul id="notification">
+            <li><label id="notif">Notification</label></li>
+            <li><label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round">
+                    </span>
+                </label></li>
+        </ul> -->
+            <br><br>
+            <input type="submit" value="Create Event">
+            <input type="reset">
+            <div class="alert">Your data has been added</div>
+        </form>
+    </div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+
+
+    <script src="main.js"></script>
 </body>
 
 </html>
