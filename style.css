@@ -186,4 +186,63 @@ input[type=reset] {
 
 /* register end */
 
-/* login */
+/* learn */
+
+#what_learn {
+    float: left;
+    color: black;
+    font-size: 32px;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: 800;
+    margin-left: 200px;
+    margin-top: 200px;
+}
+
+.square2 {
+    float: right;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    width: 500px;
+    height: 100%;
+    /* width: 50px; */
+    border-radius: 10px;
+    background-color: #0F0F0F;
+    padding: 20px;
+}
+
+#topic {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+/* welcome */
+.square3 {
+    background-color: black;
+}
+
+#resources {
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.resource_link {
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 2px;
+}

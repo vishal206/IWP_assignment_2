@@ -11,28 +11,29 @@
 
 <body>
     <div class="square">
-        <form class="container" id="informationForm">
+        <form name="registerForm" class="container" action="log_in.html" onsubmit="return registerValidation()"
+            method="get">
 
             <h2>Account information</h2>
 
             <hr><br>
             <label>Full Name</label>
-            <input type="text" id="name" name="Fullname" placeholder="Full name" required>
+            <input type="text" id="name" name="Fullname" placeholder="Full name">
             <br><br>
 
             <label>Date of birth</label>
-            <input type="date" id="dob">
+            <input type="date" name="dob" id="dob">
             <br><br>
 
             <label for="email">Enter your email</label>
-            <input type="email" id="email" name="Email" placeholder="abcdef@gmail.com" required>
+            <input type="email" id="email" name="Email" placeholder="abcdef@gmail.com">
             <br><br>
 
             <label>Account type</label><br><br>
-            <input type="radio" id="Personal Account" name="Account type" value="Personal Account" required>
+            <input type="radio" id="Personal Account" name="Account type" value="Personal Account">
               <label for="Personal Account">Personal Account</label>
             <br><br>
-            <input type="radio" id="Company Account" name="Company Account" value="Company Account" required>
+            <input type="radio" id="Company Account" name="Company Account" value="Company Account">
               <label for="Company Account">Company Account</label><br><br>
 
             <h2>Security</h2>
@@ -40,18 +41,17 @@
             <br>
 
             <label>Password</label>
-            <input type="password" id="pwd" name="password" placeholder="password" pattern="(?=.*[A-Z]).{8,}" title="Minimum 8 letters & 
-                Must use Capital letters[A-Z]" required>
+            <input type="password" id="pwd" name="password" placeholder="password">
             <br><br>
             <label>Re-enter Password</label>
-            <input type="password" id="re-pwd" name="Re-enter password" placeholder="re-enter" required>
+            <input type="password" id="re-pwd" name="Repassword" placeholder="re-enter">
             <br><br>
 
 
             <h2>Physical Address</h2>
             <hr><br>
             <label>Country</label>
-            <select id="country" name="country" required>
+            <select id="country" name="country">
                 <option value="select">-Select country-</option>
                 <option value="India">India</option>
                 <option value="USA">USA</option>
@@ -59,7 +59,7 @@
                 <option value="Canada">Canada</option>
             </select><br><br>
             <label>State</label>
-            <select id="State" name="State" required>
+            <select id="State" name="State">
                 <option value="select">-Select state-</option>
                 <option value="Tamil Nadu">Tamil Nadu</option>
                 <option value="Karnataka">Karnataka</option>
@@ -69,7 +69,7 @@
             <br>
 
             <label>Address</label>
-            <input type="text" id="address" name="Address" placeholder="Type Address" required>
+            <input type="text" id="address" name="Address" placeholder="Type Address">
             <br><br>
             <label>Pin code</label>
             <input type="number" id="pinCode" name="Pin_Code" placeholder="Type pin code">
@@ -78,37 +78,103 @@
 
             <h2>Notification</h2>
             <hr><br>
-            <input type="checkbox" id="notification1" name="notification" value="recieve email" required>
+            <input type="checkbox" id="notification1" name="notification1" value="recieve email">
             <label for="notification1">I want to recieve email</label>
             <br><br>
-            <input type="checkbox" id="notification2" name="notification" value="push notification">
+            <input type="checkbox" id="notification2" name="notification2" value="push notification">
             <label for="notification2">Push Notification</label>
-            <!-- <ul id="notification">
-            <li><label id="notif">Notification</label></li>
-            <li><label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round">
-                    </span>
-                </label></li>
-        </ul> -->
             <br><br>
             <input type="submit" value="SignUp">
             <input type="reset">
-            <div class="alert">Your data has been added</div>
         </form>
     </div>
 
+    <script>
+        function registerValidation() {
+            var name = document.registerForm.Fullname.value;
+            var email = document.registerForm.Email.value;
+            var dob = document.registerForm.dob.value;
+            var pwd = document.registerForm.password.value;
+            var re_pwd = document.registerForm.Repassword.value;
+            var country = document.registerForm.country.value;
+            var state = document.registerForm.State.value;
+            var address = document.registerForm.Address.value;
+            var pin = document.registerForm.Pin_Code.value;
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+            var notification1 = document.registerForm.notification1;
+            var notification12 = document.registerForm.notification2;
 
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+            // NAME VALIDATION
+            if (name == "" || name == null) {
+                alert("enter your name");
+                return false;
+            }
 
+            // EMAIL VALIDATION
+            var at = email.indexOf('@');
+            var dot = email.lastIndexOf(".");
 
-    <script src="main.js"></script>
+            if (email == "" || email == null) {
+                alert("enter your email");
+                return false;
+            } else if (at < 1 || dot < at + 2 || dot + 2 >= email.length) {
+                alert("enter a valid email");
+            }
+
+            // DATE OF BIRTH VALIDATION
+            if (dob == "" || dob == null) {
+                alert("enter your date of birth");
+                return false;
+            }
+
+            // PASSWORD VALIDATION
+            if (pwd.length < 8) {
+                alert("password should be of atleast 8 character");
+                return false;
+            }
+
+            // RE ENTER PASSWORD VALIDATION
+            if (re_pwd.length == 0) {
+                alert("enter your password again");
+                return false;
+            }
+
+            if (pwd != re_pwd) {
+                alert("password isn't matching");
+                return false;
+            }
+
+            // COUNTRY VALIDATION
+            if (country == "" || country == null || country == "select") {
+                alert("select your country");
+                return false;
+            }
+
+            // STATE VALIDATION
+            if (state == "" || state == null || state == "select") {
+                alert("select your state");
+                return false;
+            }
+
+            // ADDRESS VALIDATION
+            if (address == "" || address == null) {
+                alert("enter your address");
+                return false;
+            }
+            // PIN VALIDATION
+            if (pin == "" || pin == null) {
+                alert("enter your address pin code");
+                return false;
+            }
+
+            // NOTIFICATION VALIDATION
+            if (!notification1.checked && !notification2.checked) {
+                alert("select atleast one notification method");
+                return false;
+            }
+
+        }
+    </script>
 </body>
 
 </html>

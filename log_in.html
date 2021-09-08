@@ -7,23 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log-in</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function validateForm() {
+            var email = document.LoginForm.lemail.value;
+            var pwd = document.LoginForm.password.value;
+            var at = email.indexOf('@');
+            var dot = email.lastIndexOf(".");
+            if (email == null || email == "") {
+                alert("email can't be blank");
+                return false;
+            } else if (at < 1 || dot < at + 2 || dot + 2 >= email.length) {
+                alert("enter a valid email");
+                return false;
+            } else if (pwd.length < 8) {
+                alert("password must be atleast 8 character long");
+                return false;
+            }
+        }
+    </script>
+
 </head>
 
 <body>
     <div class="square">
-        <form class="container" id="informationForm">
+        <form name="LoginForm" class="container" id="informationForm" action="home.html"
+            onsubmit="return validateForm()" method="get">
             <h2>LogIn</h2>
             <hr><br>
             <label>Enter your email</label>
-            <input type="text" id="name" name="Fullname" placeholder="Full name" required>
+            <input type="text" id="email" name="lemail" placeholder="abcdef@gmail.com">
             <br><br>
             <label>Password</label>
-            <input type="password" id="pwd" name="password" placeholder="password" pattern="(?=.*[A-Z]).{8,}" title="Minimum 8 letters & 
-                Must use Capital letters[A-Z]" required>
+            <input type="password" id="pwd" name="password" placeholder="password">
             <br><br>
             <input type="submit" value="LogIn">
         </form>
     </div>
+
+
+
 </body>
 
 </html>
