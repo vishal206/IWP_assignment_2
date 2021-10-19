@@ -42,11 +42,28 @@ if($conn->query($sql)===TRUE){
 }
 }
 
+// login verification
 if(isset($_POST["btnLogin"])){
   $email=$_POST["lemail"];
   $pwd=$_POST["lpassword"];
 
-  echo "its login :".$email." ".$pwd;
+  // echo "its login :".$email." ".$pwd;
+  $sql="SELECT password FROM userinfo WHERE email='$email'";
+  $result=$conn->query($sql);
+  if($result->num_rows >0){
+    while($row = $result->fetch_assoc()){
+    $pwdDb=$row["password"];
+    }
+  }else{
+    echo "user not found";
+  }
+
+  if($pwdDb === $pwd){
+    header('Location: welcome.html');
+  }
+  else{
+    echo "check password";
+  }
 }
 
 ?>
