@@ -7,6 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".text_side").click(function () {
+                $(this).text("Vishal R");
+            });
+            $(".who_des").hover(function () {
+                $(this).css("font-weight", "1000");
+            }, function () {
+                $(this).css("font-weight", "500");
+            });
+            $("#my_pic").click(function () {
+                $("body").css("background", "white");
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -24,6 +40,7 @@
     </div>
     <div class="what_is_karko">
     </div>
+
 </body>
 
 </html>
