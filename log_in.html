@@ -13,21 +13,23 @@
 
 <body>
     <div class="square">
-        <form name="LoginForm" class="container" id="informationForm" action="db_connect.php"
-            onsubmit="return validateForm()" method="POST">
+        <form name="LoginForm" action="db_connect.php" onsubmit="return validateForm()" method="POST">
             <h2>LogIn</h2>
             <hr><br>
             <label>Enter your email</label>
-            <input type="text" id="email" name="lemail" placeholder="abcdef@gmail.com">
-            <br><br>
+            <input type="text" id="email" name="lemail" onblur="ajaxValidateEmail()" placeholder="abcdef@gmail.com">
+            <br>
+            <label id="message"></label>
+            <br>
             <label>Password</label>
-            <input type="password" id="pwd" name="lpassword" placeholder="password">
+            <input type="password" id="pwd" name="lpassword" onblur="ajaxValidatePwd(this)" placeholder="password">
             <br><br>
             <input type="submit" value="LogIn" name="btnLogin">
+
         </form>
     </div>
 
-    <script src="index.js">
+    <script src="index.js" type="text/javascript">
     </script>
 
 </body>

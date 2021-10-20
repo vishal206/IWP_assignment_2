@@ -3,6 +3,7 @@ function validateForm() {
     var pwd = document.LoginForm.password.value;
     var at = email.indexOf('@');
     var dot = email.lastIndexOf(".");
+    alert("working");
     if (email == null || email == "") {
         alert("email can't be blank");
         return false;
@@ -99,3 +100,52 @@ function registerValidation() {
     }
 
 }
+
+
+  function ajaxValidateEmail(){
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if (reg.test(email.value) == false)
+    {
+    $("#message").html("Invalid Email Address");
+    return false;
+    }
+    $("#message").html("");
+    return true;
+  }
+
+  function ajaxValidatePwd(){
+      //check empty password field 
+ if(pw == "") { 
+    document.getElementById("message").innerHTML = "**Fill the password!"; 
+    return false; 
+    } 
+    
+   //minimum password length validation 
+    if(pw.length < 8) { 
+    document.getElementById("message").innerHTML = "**Password length must be at least 8 characters"; 
+    return false; 
+    } 
+    
+   //maximum length of password validation 
+    if(pw.length > 15) { 
+    document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters"; 
+    return false; 
+    } else { 
+    alert("Password is correct"); 
+    } 
+  }
+
+  $(document).ready(function(){
+    $("#checkValidation").click(function(){
+    var email = $("#email").val().trim();
+    var password = $("#psw").val().trim();
+    $.ajax({
+    url:'index.php',
+    type:'post',
+    data:{email:email,password:password},
+    success:function(response){
+    $("#message").html(response);
+    }
+    });
+    });
+   });

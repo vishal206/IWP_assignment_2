@@ -54,15 +54,14 @@ if(isset($_POST["btnLogin"])){
     while($row = $result->fetch_assoc()){
     $pwdDb=$row["password"];
     }
+    if($pwdDb === $pwd){
+      header('Location: welcome.html');
+    }
+    else{
+      echo "check password";
+    }
   }else{
-    echo "user not found";
-  }
-
-  if($pwdDb === $pwd){
-    header('Location: welcome.html');
-  }
-  else{
-    echo "check password";
+    echo "<span>user not found '$email'</span>";
   }
 }
 
