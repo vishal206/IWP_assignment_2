@@ -3,9 +3,10 @@ $xml = new DomDocument("1.0","UTF-8");
 $xml->formatOutput=true;
 $xml->preseveWhiteSpace=false;
 
-
+// $community=$xml->createElement("community");
+// $xml->appendChild($community);
 // $user=$xml->createElement("user");
-// $xml->appendChild($user);
+// $community->appendChild($user);
 
 // $uname=$xml->createElement("fullName");
 // $user->appendChild($uname);
@@ -14,19 +15,22 @@ $xml->preseveWhiteSpace=false;
 // echo "<xmp>".$xml->saveXML()."</xmp>";
 //     $xml->save("users.xml");
 
+
 $xml->load('users.xml');
 if(!$xml)
 {
-    $user=$xml->createElement("user");
-    $xml->appendChild($user);
+    $community=$xml->createElement("community");
+    $xml->appendChild($community);
 }
 else{
-    $user=$xml->firstChild;
+    $comunity=$xml->firstChild;
 }
 
 if(isset($_POST['btnRegister']))
 {
 
+    $user=$xml->createElement("user");
+    $comunity->appendChild($user);
     $funame=$_POST['Fullname'];
     $fdob=$_POST['dob'];
     $femail=$_POST['Email'];
